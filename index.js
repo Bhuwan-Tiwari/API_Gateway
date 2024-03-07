@@ -43,6 +43,9 @@ app.use('/bookingservice', async (req, res, next) => {
 //if authenticated(signin done) then token is gerated then we can put the token to get /info or for
 
 app.use('/bookingservice', createProxyMiddleware({ target: 'http://localhost:3002/', changeOrigin: true}));
+app.use('/authservice', createProxyMiddleware({ target: 'http://localhost:3001/', changeOrigin: true}));
+app.use('/flightandsearch', createProxyMiddleware({ target: 'http://localhost:3000/', changeOrigin: true}));
+app.use('/reminderservice', createProxyMiddleware({ target: 'http://localhost:3004/', changeOrigin: true}));
 
 app.listen(PORT, () => {
     console.log(`Server started at port ${PORT}`);
