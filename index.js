@@ -40,10 +40,9 @@ app.use('/bookingservice', async (req, res, next) => {
 
 //proxy middleware helps us to  make request from different server and send it as a normal request to our server
 //if we want to hit req to  port 3002  we can hit through port 3005 . It from single port we can hit different port
+//if authenticated(signin done) then token is gerated then we can put the token to get /info or for
+
 app.use('/bookingservice', createProxyMiddleware({ target: 'http://localhost:3002/', changeOrigin: true}));
-app.get('/home', (req, res) => {
-    return res.json({message: 'OK'});
-})
 
 app.listen(PORT, () => {
     console.log(`Server started at port ${PORT}`);
